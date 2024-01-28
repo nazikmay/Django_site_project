@@ -1,0 +1,30 @@
+<ul>
+    <h2> Product:  </h2>
+    <li>
+        <p> {{ product_detail.title}} </p>
+        <p> {{ product_detail.description}} </p>
+        {% if  product_detail.image %}
+             <img src="{{product_detail.image.url}}" alt="{{}product_detail.title}">
+        {%endif%}
+        <p> {{ product_detail.price}} </p>
+        <p> {{ product_detail.create_date}} </p>
+        <p> {{ product_detail.category}} </p>
+
+    </li>
+
+    <h2> Feedback:  </h2>
+    {% for feedback in product_detail.feedback_set.all%}
+
+    <li>
+        <p> {{ feedback.author}}</p>
+        <p> {{ feedback.text}}</p>
+        <p> {{ feedback.created_data}}</p>
+    </li>
+
+    {%endfor%}
+
+</ul>
+
+<button onclick="window.location.href='{% url 'productUpdateView' product_detail.pk%}'"> Change</button>
+<button onclick="window.location.href='{% url 'productListView'%}'"> Cancel</button>
+<button onclick="window.location.href='{% url 'productDeleteView' product_detail.pk%}'"> Delete </button>
