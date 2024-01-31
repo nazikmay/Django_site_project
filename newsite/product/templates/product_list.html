@@ -1,8 +1,8 @@
 <form method="get" action="{% url 'productListView' %}">
     <input type="text" name="q" placeholder="Search by title">
     <select name="category">
-        <option value=""selected> All Categories </option>
-        {% for category in categories %}
+        <option value="selected"> All Categories </option>
+        {% for category in categories%}
         <option value="{{category.name}}">{{category.name}} </option>
         {% endfor %}
 
@@ -16,6 +16,7 @@
     {% for i in product %}
     <li>
         <a href="{% url 'productDetail' i.pk  %}">{{i.title}}</a>
+
         <p> {{ i.created_date}}</p>
     </li>
 
